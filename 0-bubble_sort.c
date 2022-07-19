@@ -1,30 +1,30 @@
-#ifndef SORT_H
-#define SORT_H
-
-#include <stdio.h>
-#include <stdlib.h>
+#include "sort.h"
 
 /**
- * struct listint_s - Doubly linked list node
- * @n: Integer stored in the node
- * @prev: Pointer to the previous element of the list
- * @next: Pointer to the next element of the list
+ * bubble_sort - function that uses bubble sort to sort an array
+ * @array: array of numbers to sort
+ * @size: size of array
+ * Return: none
 */
-typedef struct listint_s
+void bubble_sort(int *array, size_t size)
 {
-	const int n;
-	struct listint_s *prev;
-	struct listint_s *next;
-} listint_t;
+	int temp, check;
+	size_t j;
 
-void bubble_sort(int *array, size_t size);
-void insertion_sort_list(listint_t **list);
-void selection_sort(int *array, size_t size);
-void quick_sort(int *array, size_t size);
-void quickSort(int *array, int low_index, int high_index, size_t size);
-int partition(int *array, int lowIndex, int highIndex, size_t size);
-
-void print_array(int *array, size_t size);
-void print_list(const listint_t *list);
-
-#endif
+	check = 1;
+	if (array == NULL || size < 2)
+		return;
+	while (check != 0)
+	{
+		check = 0;
+		for (j = 0; j < size - 1; j++)
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+				check = 1;
+				print_array(array, size);
+			}
+	}
+}
